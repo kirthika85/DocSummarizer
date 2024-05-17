@@ -14,13 +14,14 @@ if openai_api_key.startswith('sk-'):
        st.write("### Uploaded Document Contents:")
        file_contents = uploaded_file.read().decode("utf-8")
        st.write(file_contents)
+       topic=""
        summarize_button=st.button("Summarize")
        if summarize_button:
           llm=ChatOpenAI(api_key=openai_api_key,temperature=0.1,model_name="gpt-3.5-turbo")
           print(type(file_contents))
-          prompt=ChatPromptTemplate.from_template(file_contents)
+          prompt=ChatPromptTemplate.from_template("Sumarize {topic} in 4 lines")
           chain=prompt|llm
-          response=chain.invoke(f"Summarize this {prompt} in 4 lines")
+          response=chain.invoke({"topic":{file_contents}})
           print(response)
           st.write("### Summarized Document:")
           #template_start_index=response.find("template='")+len("template='")
