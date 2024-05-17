@@ -11,7 +11,6 @@ from langchain_core.prompts import ChatPromptTemplate
     #  return summarized_text
 
 st.title("Document Summarizer")
-upload_button=st.button("UploadFile")
 openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 if not openai_api_key.startswith('sk-'):
    st.warning('Please enter your OpenAI API key!', icon='⚠')
@@ -23,8 +22,9 @@ if openai_api_key.startswith('sk-'):
        st.write(file_contents)
        summarize_button=st.button("Summarize")   
        if summarize_button:
+          llm=ChatOpenAI(api_key=openai_api_key,temperature=0.8,model_name="gpt-3.5-turbo")
           prompt=ChatPromptTemplate.from_template(file_contents)
-          response=prompt|openai.Completion.create(engine="text-davinci-002", max_tokens=150)
+          response=prompt|llm
           summarized_text = response.choices[0].text.strip()
           st.write("### Summarized Document:")
           st.write(summarized_text)
