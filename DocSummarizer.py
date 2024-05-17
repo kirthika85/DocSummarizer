@@ -22,11 +22,8 @@ if openai_api_key.startswith('sk-'):
           prompt=ChatPromptTemplate.from_template("Sumarize {topic} in 4 lines")
           chain=prompt|llm
           response=chain.invoke({"topic":{file_contents}})
-          print(response)
-          print(type(response))
           st.write("### Summarized Document:")
-          #template_start_index=response.find("template='")+len("template='")
-          #template_end_index = response.find("',", template_start_index)
-          #template_text = template[template_start_index:template_end_index]
-          #template_text = template_text.replace("\\r\\n", "\n")
-          st.write(response)
+          content_start_index = response.find('content="') + len('content="')
+          content_end_index = response.find('"', content_start_index)
+          content = response[content_start_index:content_end_index]
+          st.write(content)
