@@ -24,7 +24,7 @@ if openai_api_key.startswith('sk-'):
           response=chain.invoke({"topic":{file_contents}})
           print(response)
           st.write("### Summarized Document:")
-          content_start_index = response.find('content="') + len('content="')
-          content_end_index = response.find('"', content_start_index)
-          content = response[content_start_index:content_end_index]
+          #content_start_index = response.find('content="') + len('content="')
+          #content_end_index = response.find('"', content_start_index)
+          #content = response[content_start_index:content_end_index]
           st.write(response)
