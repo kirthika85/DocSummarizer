@@ -15,7 +15,7 @@ upload_button=st.button("UploadFile")
 openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 if not openai_api_key.startswith('sk-'):
    st.warning('Please enter your OpenAI API key!', icon='⚠')
-else
+if openai_api_key.startswith('sk-'):
     uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
     if uploaded_file is not None:
        st.write("### Uploaded Document Contents:")
