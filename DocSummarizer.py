@@ -3,6 +3,7 @@ import openai
 from langchain.llms import OpenAI
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
+summarised_text=""
 
 st.title("Document Summarizer")
 openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
