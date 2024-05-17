@@ -15,12 +15,11 @@ upload_button=st.button("UploadFile")
 openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 #if not openai_api_key.startswith('sk-'):
    # st.warning('Please enter your OpenAI API key!', icon='⚠')
-if upload_button:
-   uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
-   if uploaded_file is not None:
-      st.write("### Uploaded Document Contents:")
-      file_contents = uploaded_file.read().decode("utf-8")
-      st.write(file_contents)
+uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
+if uploaded_file is not None:
+   st.write("### Uploaded Document Contents:")
+   file_contents = uploaded_file.read().decode("utf-8")
+   st.write(file_contents)
       #summarize_button=st.button("Summarize")   
       #if summarize_button:
        #  prompt=ChatPromptTemplate.from_template(file_contents)
