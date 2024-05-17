@@ -16,7 +16,7 @@ if openai_api_key.startswith('sk-'):
        st.write(file_contents)
        summarize_button=st.button("Summarize")   
        if summarize_button:
-          llm=ChatOpenAI(api_key=openai_api_key,temperature=0.8,model_name="gpt-3.5-turbo")
+          llm=ChatOpenAI(api_key=openai_api_key,temperature=0.4,model_name="gpt-3.5-turbo")
           prompt=ChatPromptTemplate.from_template(file_contents)
           response=prompt|llm
           st.write("### Summarized Document:")
