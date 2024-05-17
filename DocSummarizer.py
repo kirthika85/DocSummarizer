@@ -19,6 +19,7 @@ if openai_api_key.startswith('sk-'):
           llm=ChatOpenAI(api_key=openai_api_key,temperature=0.1,model_name="gpt-3.5-turbo")
           prompt=ChatPromptTemplate.from_template(file_contents)
           response=prompt|llm
+          print(response)
           st.write("### Summarized Document:")
           template_start_index=response.find("template='")+len("template='")
           template_end_index = response.find("',", template_start_index)
