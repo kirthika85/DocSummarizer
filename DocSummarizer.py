@@ -11,12 +11,11 @@ def summarize_document(document):
       return summarized_text
 
 st.title("Document Summarizer")
-upload_button=st.button("UploadFile")
 summarize_button=st.button("Summarize")
 openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
-if not openai_api_key.startswith('sk-'):
-    st.warning('Please enter your OpenAI API key!', icon='⚠')
-if upload_button and openai_api_key.startswith('sk-'):
+#if not openai_api_key.startswith('sk-'):
+    #st.warning('Please enter your OpenAI API key!', icon='⚠')
+if summarize_button and openai_api_key.startswith('sk-'):
     print("uploading a file")  
     uploaded_file = st.file_uploader("Upload a document file", type=["txt", "pdf"])
     if uploaded_file is not None:
