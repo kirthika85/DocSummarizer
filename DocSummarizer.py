@@ -27,4 +27,4 @@ if openai_api_key.startswith('sk-'):
           #content_start_index = response.find('content="') + len('content="')
           #content_end_index = response.find('"', content_start_index)
           #content = response[content_start_index:content_end_index]
-          st.write(response)
+          st.write(response.content)
