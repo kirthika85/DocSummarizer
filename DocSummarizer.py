@@ -18,7 +18,8 @@ if openai_api_key.startswith('sk-'):
        if summarize_button:
           llm=ChatOpenAI(api_key=openai_api_key,temperature=0.1,model_name="gpt-3.5-turbo")
           prompt=ChatPromptTemplate.from_template(file_contents)
-          response=prompt|llm
+          chain=prompt|llm
+          response=chain.invoke
           print(response)
           summarised_text= ChatPromptTemplate.from_messages()
           parser=StrOutputParser()
