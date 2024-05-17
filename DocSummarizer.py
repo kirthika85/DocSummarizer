@@ -14,13 +14,12 @@ if openai_api_key.startswith('sk-'):
        st.write("### Uploaded Document Contents:")
        file_contents = uploaded_file.read().decode("utf-8")
        st.write(file_contents)
-       input_button=st.text_input("Enter the text you want to find in the document")
        summarize_button=st.button("Summarize")
        if summarize_button:
           llm=ChatOpenAI(api_key=openai_api_key,temperature=0.1,model_name="gpt-3.5-turbo")
           prompt=ChatPromptTemplate.from_template(file_contents)
           chain=prompt|llm
-          response=chain.invoke("Summarize this {prompt} in 4 lines")
+          response=chain.invoke(f"Summarize this {prompt} in 4 lines")
           print(response)
           st.write("### Summarized Document:")
           #template_start_index=response.find("template='")+len("template='")
