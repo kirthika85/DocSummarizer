@@ -20,8 +20,8 @@ if openai_api_key.startswith('sk-'):
           prompt=ChatPromptTemplate.from_template(file_contents)
           response=prompt|llm
           st.write("### Summarized Document:")
-          response_start_index = response.find("template='") + len("template='")
-          response_end_index = response.find("',", response_start_index)
-          response_text = response[response_start_index:response_end_index]
-          response_text = response_text.replace("\\r\\n", "\n")
-          st.write(response_text)
+          template_start_index=response.find("template='")+len("template='")
+          template_end_index = response.find("',", template_start_index)
+          template_text = template[template_start_index:template_end_index]
+          template_text = template_text.replace("\\r\\n", "\n")
+          st.write(template_text)
