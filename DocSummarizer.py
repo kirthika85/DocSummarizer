@@ -28,6 +28,4 @@ if upload_button and openai_api_key.startswith('sk-'):
            summarized_text = summarize_document(file_contents)
            st.write("### Summarized Document:")
            st.write(summarized_text)
-    else
-         print("In the else function")
 
