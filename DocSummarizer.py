@@ -23,6 +23,7 @@ if openai_api_key.startswith('sk-'):
           chain=prompt|llm
           response=chain.invoke({"topic":{file_contents}})
           print(response)
+          print(type(response))
           st.write("### Summarized Document:")
           #template_start_index=response.find("template='")+len("template='")
           #template_end_index = response.find("',", template_start_index)
